@@ -1,0 +1,119 @@
+.app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-color: #f5f5f5;
+	align-content: center;
+}
+
+.header {
+	background-color: #76b6ff;
+	color: white;
+	padding: 15px 20px;
+	
+
+	h1 {
+		margin: 0;
+		font-size: 24px;
+	}
+}
+
+.container {
+	display: flex;
+	flex: 1;
+}
+.sort {
+	align-content: center;
+}
+
+.sidebar {
+	width: 60%;
+	padding: 20px;
+	background: white;
+	border-right: 1px solid #ddd;
+	
+}
+
+.controls {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 20px;
+	
+	input {
+		flex: 1;
+		padding: 10px;
+		border: 1px solid #ddd;
+		border-radius:  45px;
+		font-size: 14px;
+	}
+
+	select {
+		padding: 10px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		background: white;
+		font-size: 14px;
+	}
+
+	button {
+		padding: 10px 20px;
+		background-color: #76b6ff;
+		color: white;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 14px;
+		transition: background-color 0.2s;
+		box-shadow: 0 2px 5px rgba(0, 0, 0);
+		
+
+		&:hover {
+			background-color: #76b6ff;
+		}
+	}
+}
+
+.details {
+	width: 40%;
+	padding: 20px;
+	background-color: #f9f9f9;
+}
+
+.emptyState {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	color: #999;
+	font-size: 16px;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+	margin-top: 20px;
+	padding: 10px;
+	background: white;
+	border-radius: 4px;
+
+	button {
+		padding: 8px 16px;
+		background-color: #42b983;
+		color: white;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+
+		&:disabled {
+			background-color: #ccc;
+			cursor: not-allowed;
+		}
+	}
+
+	span {
+		font-size: 14px;
+		color: #666;
+	}
+}
