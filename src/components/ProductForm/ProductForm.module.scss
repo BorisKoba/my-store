@@ -1,77 +1,152 @@
-.productForm {
-	background: white;
+.formContainer {
+	max-width: 700px;
+	margin: 0 auto;
+	background: #fff;
 	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0);
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-	h2 {
-		margin-top: 0;
-		margin-bottom: 20px;
-		color: #333;
+h2 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.topSection {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.imagePreview {
+	width: 200px;
+	height: 200px;
+	flex-shrink: 0;
+
+	.productImage {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 12px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 	}
 }
 
+.inputs {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
 .formGroup {
-	margin-bottom: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 
 	label {
-		display: block;
-		margin-bottom: 5px;
 		font-weight: bold;
-		color: #555;
 	}
 
 	input,
 	textarea {
-		width: 100%;
 		padding: 10px;
-		border: 1px solid #ddd;
-		border-radius: 4px;
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 		font-size: 14px;
+		width: 100%;
+		outline: none;
+		transition: border-color 0.3s;
 
-		&.error {
-			border-color: #ff4444;
+		&:focus {
+			border-color: #ffd700;
 		}
-	}
-
-	textarea {
-		min-height: 100px;
-		resize: vertical;
 	}
 }
 
-.errorMessage {
-	color: #ff4444;
+.error {
+	border-color: red;
+}
+
+.errorMsg {
+	color: red;
 	font-size: 12px;
-	margin-top: 5px;
-	display: block;
 }
 
 .formActions {
 	display: flex;
-	justify-content: flex-end;
-	gap: 10px;
+	justify-content: space-between;
 	margin-top: 20px;
 
 	button {
 		padding: 10px 20px;
-		border: none;
-		border-radius: 4px;
+		border-radius: 8px;
 		cursor: pointer;
 		font-size: 14px;
+		border: none;
+		transition: background-color 0.3s ease;
+	}
 
-		&:first-child {
-			background-color: #FFA500;
-			color: white;
+	.cancelButton {
+		background-color: transparent;
+		color: #333;
+		border: 1px solid #ccc;
+	}
 
-			&:disabled {
-				background-color: #cccccc;
-				cursor: not-allowed;
-			}
-		}
+	.saveButton {
+		background-color: #ffd700;
+		color: white;
 
-		&:hover:not(:disabled) {
-			opacity: 0.8;
+		&:disabled {
+			background-color: #be3030;
+			cursor: not-allowed;
 		}
 	}
+.imagePreview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+
+	.productImage {
+		width: 200px;
+		height: 200px;
+		object-fit: cover;
+		border-radius: 8px;
+		border: 1px solid #ccc;
+	}
+}
+
+.formGroup {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+
+	label {
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
+
+	input,
+	textarea {
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		font-size: 14px;
+		outline: none;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+		&:focus {
+			border-color: #ffd700;
+		}
+	}
+}
 }

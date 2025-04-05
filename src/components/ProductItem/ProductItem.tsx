@@ -31,7 +31,7 @@ export const ProductItem: React.FC<Props> = ({
 					</span>
 				</div>
 			</div>
-			{/* Кнопка "Delete" */}
+			
 			<button
 				className={styles.deleteBtn}
 				onClick={(e) => {

@@ -13,8 +13,8 @@ interface Props {
 export const ProductForm: React.FC<Props> = ({
 	product,
 	isNew,
-	onSave
-	
+	onSave,
+	onCancel
 }) => {
 	const [formData, setFormData] = useState<Product>({ ...product });
 	const [errors, setErrors] = useState<ProductFormErrors>({});
@@ -32,6 +32,20 @@ export const ProductForm: React.FC<Props> = ({
 		}));
 	};
 
+	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files?.[0];
+		if (!file) return;
+
+		const reader = new FileReader();
+		reader.onloadend = () => {
+			setFormData(prev => ({
+				...prev,
+				image: reader.result as string
+			}));
+		};
+		reader.readAsDataURL(file);
+	};
+
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 		const validationErrors = ProductService.validateProduct(formData);
@@ -46,6 +60,19 @@ export const ProductForm: React.FC<Props> = ({
 		<div className={styles.formContainer}>
 			<h2>{isNew ? 'New item' : 'Editing'}</h2>
 			<form onSubmit={handleSubmit} className={styles.form}>
+
+				<div className={styles.imagePreview}>
+					<img
+						src={formData.image || '/placeholder.png'}
+						alt="Product"
+						className={styles.productImage}
+					/>
+
+					{isNew && (
+						<input type="file" accept="image/*" onChange={handleImageChange} />
+					)}
+				</div>
+
 				<div className={styles.formGroup}>
 					<label>Name*</label>
 					<input
@@ -59,7 +86,7 @@ export const ProductForm: React.FC<Props> = ({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>description</label>
+					<label>Description</label>
 					<textarea
 						name="description"
 						value={formData.description || ''}
@@ -71,7 +98,7 @@ export const ProductForm: React.FC<Props> = ({
 				</div>
 
 				<div className={styles.formGroup}>
-					<label>price*</label>
+					<label>Price*</label>
 					<input
 						type="number"
 						name="price"
@@ -84,14 +111,11 @@ export const ProductForm: React.FC<Props> = ({
 					{errors.price && <span className={styles.errorMsg}>{errors.price}</span>}
 				</div>
 
-				{}
 				<div className={styles.formActions}>
-					<button type="submit" disabled={Object.keys(errors).length > 0}>
-						Save
-					</button>
+					<button type="button" onClick={onCancel} className={styles.cancelButton}>Cancel</button>
+					<button type="submit" className={styles.saveButton}>Save</button>
 				</div>
 			</form>
 		</div>
-
 	);
 };

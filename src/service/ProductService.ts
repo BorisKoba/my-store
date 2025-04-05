@@ -17,24 +17,49 @@ export class ProductService {
 		return new Date();
 	}
 
+	// Изменено: теперь возвращает статические данные
 	static async getInitialProducts(): Promise<Product[]> {
-		try {
-			const response = await fetch('/data/savedproducts.json');
-			if (!response.ok) {
-				throw new Error('Failed to fetch products');
+		const savedProducts = [
+			{
+				"name": "book",
+				"description": "A most interesting novel",
+				"price": 20,
+				"image": "/images/book.jpg"
+			},
+			{
+				"name": "pen",
+				"description": "Beautiful pen",
+				"price": 5,
+				"image": "/images/pen.jpg"
+			},
+			{
+				"name": "pencil",
+				"description": "Great pencil",
+				"price": 3,
+				"image": "/images/pencil.jpg"
+			},
+			{
+				"name": "notebook",
+				"description": "Unique snow-white notebook",
+				"price": 7,
+				"image": "/images/notebook.jpg"
+			},
+			{
+				"name": "ruler",
+				"description": "Perfectly straight ruler",
+				"price": 4,
+				"image": "/images/ruler.jpg"
 			}
-			const savedProducts = await response.json();
-			const products = savedProducts.map((product: any) => ({
-				...product,
-				id: this.generateId(),
-				creationDate: this.getCurrentDate(),
-			}));
-			this.initializeLastId(products);
-			return products;
-		} catch (error) {
-			console.error('Error loading products:', error);
-			return [];
-		}
+		];
+
+		const products = savedProducts.map((product: any) => ({
+			...product,
+			id: this.generateId(),
+			creationDate: this.getCurrentDate(),
+		}));
+
+		this.initializeLastId(products);
+		return products;
 	}
 
 	static getProducts(): Product[] {
