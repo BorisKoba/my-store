@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Product Management Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple product management application built using **React** and **TypeScript**. The application allows you to view, create, edit, and delete products. It includes pagination and allows for product images to be uploaded.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Product List**: Displays a list of products with details such as name, description, and price.
+- **Pagination**: Allows navigation through multiple pages of products (5 items per page).
+- **Create New Product**: You can add a new product by filling out a form with the product's name, description, price, and image.
+- **Edit Product**: You can edit the details of an existing product.
+- **Delete Product**: Allows the removal of a product from the list.
+- **Image Upload**: The ability to upload an image for new products.
+- **Validation**: Ensures that required fields like name and price are provided before saving a product.
 
-### `yarn start`
+## Application Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. **ProductList** - Displays a paginated list of products.
+2. **ProductForm** - Form to create or edit a product.
+3. **ProductService** - Manages product data and validation.
+4. **ProductItem** - Displays individual product details in the list.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Usage
 
-### `yarn test`
+To run the project locally:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `yarn build`
+    ```bash
+    git clone https://github.com/yourusername/product-management.git
+    cd product-management
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```bash
+    npm install
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
 
-### `yarn eject`
+    ```bash
+    npm start
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. Open your browser and navigate to `http://localhost:3000`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Known Issues
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- The **Save Product** functionality was not able to load the saved products properly into the form (most likely due to an issue with loading the saved data file into the service).
+- The saved product data was supposed to be stored in a JSON file, but it wasn't loaded correctly into the service due to an unknown issue.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Files
 
-## Learn More
+1. **ProductService** - Handles fetching and saving products.
+2. **Saved Product JSON File**: The products are saved in a JSON file (this part may not work properly at the moment due to an issue with loading the data from the file).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
